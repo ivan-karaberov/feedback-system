@@ -10,14 +10,14 @@ import { Observable } from "rxjs/internal/Observable";
 export class AuthService{
     constructor(private http: HttpClient){}
 
-    register(){}
+    register(user: User){
+        return this.http.post(`http://localhost:3000/users`, user)
+    }
 
-    login(user: User): Observable<User[]>{
+    login(email: string): Observable<User[]>{
         /* Получаем пользователя(nickname, email, password) по email */
-        return this.http.get<User[]>(`http://localhost:3000/users?email=${user.email}`);
+        return this.http.get<User[]>(`http://localhost:3000/users?email=${email}`);
     }
 
-    setAuth(){
-        
-    }
+    setAuth(){}
 }

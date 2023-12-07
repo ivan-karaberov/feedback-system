@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { User } from '../../shared/interfaces'
 
 @Component({
   selector: 'app-registration',
@@ -9,7 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class RegistrationComponent implements OnInit{
   form!: FormGroup;
   
-  constructor() {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -21,7 +24,16 @@ export class RegistrationComponent implements OnInit{
   }
 
   onSubmit(){
-    console.log("GROUP: " + this.form.value.password);
+    const user: User = {nickname: this.form.value.nickname, email: this.form.value.email, password: this.form.value.password};
+    console.log(user);
+    this.auth.register(user).subscribe(
+      () => {
+        window.localStorage.setItem('user', this.form.value.nickname);
+        this.auth.setAuth();
+        this.router.navigate(['/system', 'home']);
+    }
+    );
+    console.log('test');
   }
 }
 

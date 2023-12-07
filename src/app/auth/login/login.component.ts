@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit{
 
   onSubmit(){
     /* Авторизация пользователя*/
-    this.auth.login(this.form.value).subscribe(
+    this.auth.login(this.form.value.email).subscribe(
       (responce: User[]) => {
         if(responce.length){
           if(this.form.value.email === responce[0].email && this.form.value.password === responce[0].password){
