@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,7 +15,8 @@ import { notFoundComponent } from './shared/components/notfound/notfound.compone
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule
+    AuthModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

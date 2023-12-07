@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from 'src/app/shared/interfaces';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit{
   form!: FormGroup;
   
-  constructor() {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -19,6 +22,23 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmit(){
-    console.log(this.form.value["email"]);
+    /* Авторизация пользователя*/
+    this.auth.login(this.form.value).subscribe(
+      (responce: User[]) => {
+        if(responce.length){
+          if(this.form.value.email === responce[0].email && this.form.value.password === responce[0].password){
+            window.localStorage.setItem('user',responce[0].nickname);
+            this.auth.setAuth();
+            this.router.navigate(['/system', 'home']);
+          }
+          else{
+            alert('Авторизация не произведена. Email или Пароль не соответсвуют действительности');
+          } 
+        } else {
+          alert('Авторизация не произведена. Email или Пароль не соответсвуют действительности');
+        }
+      },
+      err => alert('При авторизации произошла ошибка, попробуйте заново')
+      )
   }
 }
