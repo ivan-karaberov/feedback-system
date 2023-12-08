@@ -29,7 +29,6 @@ export class RegistrationComponent implements OnInit{
     this.auth.register(user).subscribe(
       () => {
         window.localStorage.setItem('user', this.form.value.nickname);
-        this.auth.setAuth();
         this.router.navigate(['/system', 'main']);
     }
     );

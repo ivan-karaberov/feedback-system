@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit{
         if(responce.length){
           if(this.form.value.email === responce[0].email && this.form.value.password === responce[0].password){
             window.localStorage.setItem('user',responce[0].nickname);
-            this.auth.setAuth();
             this.router.navigate(['/system', 'main']);
           }
           else{
