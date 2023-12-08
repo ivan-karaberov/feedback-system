@@ -30,7 +30,7 @@ export class RegistrationComponent implements OnInit{
       () => {
         window.localStorage.setItem('user', this.form.value.nickname);
         this.auth.setAuth();
-        this.router.navigate(['/system', 'home']);
+        this.router.navigate(['/system', 'main']);
     }
     );
     console.log('test');
