@@ -21,6 +21,10 @@ export class AuthService{
         return this.http.get<User[]>(`http://localhost:3000/users?email=${email}`);
     }
 
+    getUserByNickname(nickname: string): Observable<User[]> {
+        return this.http.get<User[]>(`http://localhost:3000/users?nickname=${nickname}`);
+    }
+
     logout(){
         window.localStorage.clear();
     }

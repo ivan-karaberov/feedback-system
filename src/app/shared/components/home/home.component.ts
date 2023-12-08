@@ -8,5 +8,12 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
-export class HomeComponent{
+export class HomeComponent implements OnInit{
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+      if (window.localStorage.getItem('user')) {
+          this.router.navigate(["system", "main"]);
+      }
+  }
 }

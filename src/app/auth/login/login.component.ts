@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit{
       (responce: User[]) => {
         if(responce.length){
           if(this.form.value.email === responce[0].email && this.form.value.password === responce[0].password){
-            window.localStorage.setItem('user',responce[0].nickname);
+            window.localStorage.setItem('user',JSON.stringify(responce));
             this.router.navigate(['/system', 'main']);
           }
           else{
