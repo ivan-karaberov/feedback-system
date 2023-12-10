@@ -8,8 +8,6 @@ import { Observable } from "rxjs/internal/Observable";
     providedIn: "root"
 })
 export class AuthService{
-    //isLoggedIn: boolean = false;
-
     constructor(private http: HttpClient){}
 
     register(user: User){
@@ -23,6 +21,10 @@ export class AuthService{
 
     getUserByNickname(nickname: string): Observable<User[]> {
         return this.http.get<User[]>(`http://localhost:3000/users?nickname=${nickname}`);
+    }
+
+    isAuth(){
+        return window.localStorage.getItem('user');
     }
 
     logout(){
