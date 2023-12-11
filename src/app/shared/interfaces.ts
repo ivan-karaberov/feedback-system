@@ -3,3 +3,10 @@ export interface User{
     email: string,
     password: string
 }
+
+export interface Question{
+    title: string,
+    author: string,
+    date: string,
+    answers: Array<object>
+}

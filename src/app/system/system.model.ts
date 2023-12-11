@@ -1,3 +1,4 @@
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { MainComponent } from "./main/main.component";
 
@@ -10,6 +11,7 @@ import { SystemComponent } from "./system.component";
         MainComponent
     ],
     imports: [
+        CommonModule,
         SystemRoutingModule
     ]
 })

@@ -1,1 +1,7 @@
 <p>main works!</p>
+<button (click)="exit()">Выйти</button>
+<button (click)="click()">Получить</button>
+
+<div *ngFor="let q of question">
+    {{q.title}} || {{q.date}}
+</div>

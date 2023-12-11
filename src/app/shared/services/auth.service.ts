@@ -24,7 +24,7 @@ export class AuthService{
     }
 
     isAuth(){
-        return window.localStorage.getItem('user');
+        return window.localStorage.getItem('user') ? true : false;
     }
 
     logout(){
