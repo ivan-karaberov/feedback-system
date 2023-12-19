@@ -16,8 +16,9 @@ export class MainComponent {
 
   click(){
     this.show=true;
-    this.user.getAllTest('ratata').forEach((resp:Question[]) => {
-      this.question = resp;
+    this.user.getAllTest(this.user.getNickname()).forEach((resp:Question[]) => {
+        this.question = resp;
+        console.log("test", this.user.getNickname(), this.question);
     });
   }
 

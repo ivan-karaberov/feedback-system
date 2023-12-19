@@ -3,5 +3,6 @@
 <button (click)="click()">Получить</button>
 
 <div *ngFor="let q of question">
-    {{q.title}} || {{q.date}}
+    <app-survey [title]="q.title" [date]="q.date"></app-survey>
 </div>
+
