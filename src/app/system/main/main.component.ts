@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question } from 'src/app/shared/interfaces';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -8,18 +8,20 @@ import { UserService } from 'src/app/shared/services/user.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
+export class MainComponent implements OnInit{
   question!: Question[];
   show: boolean = false;
 
   constructor(private user:UserService, private router: Router) {}
-
-  click(){
-    this.show=true;
+  
+  ngOnInit(){
     this.user.getAllTest(this.user.getNickname()).forEach((resp:Question[]) => {
-        this.question = resp;
-        console.log("test", this.user.getNickname(), this.question);
+      this.question = resp;
     });
+  }
+  
+  create_survey(){
+    this.router.navigate(['system','create_survey']);
   }
 
   exit(){
