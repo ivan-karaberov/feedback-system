@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question } from 'src/app/shared/interfaces';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class MainComponent implements OnInit{
   question!: Question[];
   show: boolean = false;
 
-  constructor(private user:UserService, private router: Router) {}
+  constructor(private auth: AuthService, private user:UserService, private router: Router) {}
   
   ngOnInit(){
     this.user.getAllTest(this.user.getNickname()).forEach((resp:Question[]) => {
@@ -25,7 +26,8 @@ export class MainComponent implements OnInit{
   }
 
   exit(){
-    window.localStorage.clear();
+    //window.localStorage.clear();
+    this.auth.logout();
     this.router.navigate(['login']);
   }
 }
