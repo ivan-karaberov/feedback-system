@@ -4,13 +4,15 @@ import { notFoundComponent } from '../shared/components/notfound/notfound.compon
 import { MainComponent } from './main/main.component';
 import { SystemComponent } from './system.component';
 import { AuthGuard } from '../shared/services/auth.guard';
+import { CreateSurveyComponent } from './create-survey/create-survey.component';
 
 const routes: Routes = [
   {path: 'system', component: SystemComponent, 
                    canActivate: [AuthGuard],
                    canActivateChild: [AuthGuard],
                    children: [
-    {path: 'main', component: MainComponent}
+    {path: 'main', component: MainComponent},
+    {path: 'create_survey', component: CreateSurveyComponent}
   ]},
   
   {path: '**', component: notFoundComponent}

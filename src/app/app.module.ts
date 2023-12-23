@@ -10,6 +10,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { notFoundComponent } from './shared/components/notfound/notfound.component';
 import { SystemModule } from './system/system.model';
+import { CreateSurveyComponent } from './system/create-survey/create-survey.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SystemModule } from './system/system.model';
     notFoundComponent,
     HomeComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    CreateSurveyComponent
   ],
   imports: [
     BrowserModule,
