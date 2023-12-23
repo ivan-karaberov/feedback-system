@@ -11,6 +11,8 @@ import { HomeComponent } from './shared/components/home/home.component';
 import { notFoundComponent } from './shared/components/notfound/notfound.component';
 import { SystemModule } from './system/system.model';
 import { CreateSurveyComponent } from './system/create-survey/create-survey.component';
+import { TakeSurveyComponent } from './system/take-survey/take-survey.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,14 +21,16 @@ import { CreateSurveyComponent } from './system/create-survey/create-survey.comp
     HomeComponent,
     FooterComponent,
     HeaderComponent,
-    CreateSurveyComponent
+    CreateSurveyComponent,
+    TakeSurveyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
     SystemModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

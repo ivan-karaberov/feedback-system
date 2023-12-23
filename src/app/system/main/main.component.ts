@@ -26,7 +26,6 @@ export class MainComponent implements OnInit{
   }
 
   exit(){
-    //window.localStorage.clear();
     this.auth.logout();
     this.router.navigate(['login']);
   }
