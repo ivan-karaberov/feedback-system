@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, resolveForwardRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from 'src/app/shared/interfaces';
@@ -16,6 +16,9 @@ export class TakeSurveyComponent implements OnInit {
   form!: FormGroup;
  
   constructor(private route: ActivatedRoute, private user: UserService, private router: Router) { }
+
+  id!:number;
+  question!: Question;
 
   ngOnInit() {
     this.author = this.route.snapshot.params['author'];
@@ -36,10 +39,20 @@ export class TakeSurveyComponent implements OnInit {
       theme: new FormControl("", [Validators.required, Validators.minLength(6)]),
       message: new FormControl("", [Validators.required, Validators.minLength(6)])
     });
+
+
+    this.user.getTestByTitle(this.author, this.title).subscribe(resp => this.id = resp[0].id);
+    this.user.getAllTest(this.author).subscribe(
+      (resp: Question[]) => {
+        for(let i =0 ;i < resp.length; i++){
+          if(resp[i].title === this.title) this.question = resp[i];
+        }
+      }
+    );
   }
 
   onSubmit(){
-    console.log(this.form.value.fio)
+    this.user.addAnswer(this.id, this.question, this.form.value);
   }
 
 

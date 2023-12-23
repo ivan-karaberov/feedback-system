@@ -5,6 +5,7 @@ import { MainComponent } from './main/main.component';
 import { SystemComponent } from './system.component';
 import { AuthGuard } from '../shared/services/auth.guard';
 import { CreateSurveyComponent } from './create-survey/create-survey.component';
+import { ShowComponent } from './show/show.component';
 
 const routes: Routes = [
   {path: 'system', component: SystemComponent, 
@@ -12,7 +13,8 @@ const routes: Routes = [
                    canActivateChild: [AuthGuard],
                    children: [
     {path: 'main', component: MainComponent},
-    {path: 'create_survey', component: CreateSurveyComponent}
+    {path: 'create_survey', component: CreateSurveyComponent},
+    {path: 'show/:author/:title', component: ShowComponent}
   ]},
   
   {path: '**', component: notFoundComponent}

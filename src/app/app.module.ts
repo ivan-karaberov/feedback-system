@@ -13,6 +13,7 @@ import { SystemModule } from './system/system.model';
 import { CreateSurveyComponent } from './system/create-survey/create-survey.component';
 import { TakeSurveyComponent } from './system/take-survey/take-survey.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ShowComponent } from './system/show/show.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     HeaderComponent,
     CreateSurveyComponent,
-    TakeSurveyComponent
+    TakeSurveyComponent,
+    ShowComponent
   ],
   imports: [
     BrowserModule,
