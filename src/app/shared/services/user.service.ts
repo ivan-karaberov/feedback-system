@@ -8,23 +8,6 @@ import { User, Question, AnsQuestion, retQuestion } from "../interfaces";
 export class UserService{
     constructor(private http: HttpClient){}
     
-    // existsTitle: boolean = false;
-    
-    // checkExistsTitle(author:string, title: string){
-    //   let exists  = false;
-    //   this.getAllTest(author).subscribe(
-    //     (resp:Question[]) => {
-    //         for(let i = 0; i < resp.length; i++){
-    //             if(resp[i].title === title) {
-    //                 exists = true;
-    //                 console.log(resp[i].title, "test");
-    //             }
-    //         }
-    //     }
-    //   );
-    //   return exists;
-    // }
-
     getAllTest(author: string){
         return this.http.get<Question[]>(`http://localhost:3000/questions?author=${author}`);
     }
@@ -50,5 +33,9 @@ export class UserService{
             this.http.put(`http://localhost:3000/questions/`+id+``, question).subscribe();
         }
         alert("Успех");
+    }
+
+    deletePost(id:number){
+        this.http.delete(`http://localhost:3000/questions/`+id).subscribe();
     }
 }

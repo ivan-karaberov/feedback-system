@@ -30,7 +30,8 @@ export class RegistrationComponent implements OnInit{
       () => {
         window.localStorage.setItem('user',JSON.stringify(user));
         this.router.navigate(['/system', 'main']);
-    }
+    },
+    err => alert('При регистрации произошла ошибка, попробуйте позже')
     );
     console.log('test');
   }

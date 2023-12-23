@@ -7,7 +7,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 @Component({
   selector: 'app-show',
   templateUrl: './show.component.html',
-  styleUrls: ['./show.component.scss']
+  styleUrls: ['./show.component.scss'],
 })
 export class ShowComponent implements OnInit{
   constructor(private route: ActivatedRoute, private auth:AuthService, private router: Router, private user: UserService){}
@@ -16,7 +16,7 @@ export class ShowComponent implements OnInit{
 
   author!: string;
   title!: string;
-
+  id!:number;
   ngOnInit(){
     this.author = this.route.snapshot.params['author'];
     this.title = this.route.snapshot.params['title'];
@@ -26,6 +26,14 @@ export class ShowComponent implements OnInit{
         this.answers = resp[i].answers;
       }
     });
+
+    this.user.getTestByTitle(this.author, this.title).subscribe(resp => this.id = resp[0].id);
+  }
+
+  delete(){
+    this.user.deletePost(this.id);
+    alert('Успешно удалено');
+    this.router.navigate(['']);
   }
 
   exit(){

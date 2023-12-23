@@ -11,9 +11,9 @@
         </nav>
 </header>
 
-
 <section class="bg-white dark:bg-gray-900 h-screen">
+    <button (click)="delete()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Удалить</button>
     <div *ngFor="let q of answers">
-        <p class="text-black dark:text-white">{{q.fio}} | {{q.email}} | {{q.theme}} | {{q.message}}</p>
+        <p class="text-black dark:text-white">{{q.fio | uppercase}} | {{q.email}} | {{q.theme}} | {{q.message}}</p>
     </div>
 </section>

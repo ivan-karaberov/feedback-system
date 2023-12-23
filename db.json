@@ -6,5 +6,10 @@
       "email": "test@gmail.com",
       "password": "test_password"
     }
+  ],
+  "questions": [
+    {
+      "id": 1
+    }
   ]
 }
